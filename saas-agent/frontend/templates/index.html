@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente CS B2B · SCTEC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">CS</div>
+        <div>
+          <h1>Agente CS</h1>
+          <span class="badge">B2B · LangGraph</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <p class="nav-label">Cenários de teste</p>
+        <button class="example-btn" data-msg="Consulte a assinatura da empresa Logística Sul e adicione 1500 créditos extras de API">
+          <span class="dot success"></span>
+          Fluxo nominal
+        </button>
+        <button class="example-btn" data-msg="Consulte a assinatura da empresa Empresa Inexistente XYZ e adicione 500 créditos">
+          <span class="dot warning"></span>
+          Empresa inexistente
+        </button>
+        <button class="example-btn" data-msg="Consulte a assinatura da TechFlow Soluções e adicione 1000 créditos extras">
+          <span class="dot warning"></span>
+          Assinatura inativa
+        </button>
+        <button class="example-btn" data-msg="Adicione 5000 créditos na Logística Sul">
+          <span class="dot danger"></span>
+          Acima do limite (5000)
+        </button>
+        <button class="example-btn" data-msg="Cancele a assinatura da Alpha Varejo Brasil e faça estorno dos créditos">
+          <span class="dot danger"></span>
+          Fora de escopo
+        </button>
+        <button class="example-btn" data-msg="Busque empresas com nome Alpha">
+          <span class="dot info"></span>
+          Ambiguidade (Alpha)
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-card">
+          <span class="status-dot" id="api-status"></span>
+          <span id="api-status-text">Verificando API...</span>
+        </div>
+        <p class="limits">
+          Limite: <strong>3.000</strong> créditos/op<br />
+          Apenas assinaturas <strong>ATIVAS</strong>
+        </p>
+      </div>
+    </aside>
+
+    <!-- Main chat -->
+    <main class="main">
+      <header class="chat-header">
+        <div>
+          <h2>Assistente Operacional de CS</h2>
+          <p>Consulte empresas, saldos e inclua créditos com segurança</p>
+        </div>
+        <button id="clear-btn" class="btn-ghost" title="Limpar conversa">
+          Limpar
+        </button>
+      </header>
+
+      <div class="chat-container" id="chat">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">⚡</div>
+          <h3>Como posso ajudar o time de CS?</h3>
+          <p>
+            Envie solicitações em linguagem natural. O agente busca a empresa,
+            valida regras de negócio e executa a inclusão de créditos quando permitido.
+          </p>
+          <div class="chips">
+            <span class="chip">buscar empresa</span>
+            <span class="chip">consultar saldo</span>
+            <span class="chip">incluir créditos</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="composer">
+        <form id="form">
+          <div class="input-wrap">
+            <textarea
+              id="input"
+              placeholder="Ex.: Consulte a Logística Sul e adicione 1.500 créditos extras..."
+              rows="1"
+              autofocus
+            ></textarea>
+            <button type="submit" id="send-btn" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <p class="hint">Enter para enviar · Shift+Enter para nova linha</p>
+        </form>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
