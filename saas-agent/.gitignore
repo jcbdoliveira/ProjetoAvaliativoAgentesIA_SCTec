@@ -1,11 +1,47 @@
-__pycache__/
-*.py[cod]
-*$py.class
+# Ambiente virtual
 .venv/
 venv/
 env/
+
+# Variáveis de ambiente (nunca commitar credenciais)
 .env
-dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs e temporários
+*.log
 .DS_Store
+Thumbs.db
+
+# Testes / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
