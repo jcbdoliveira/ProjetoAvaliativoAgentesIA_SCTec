@@ -1,3 +1,11 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="img/logo_sctecB.png">
+    <source media="(prefers-color-scheme: light)" srcset="img/logo_sctecW.png">
+    <img alt="Logo SCTEC" src="img/logo_sctecW.png" width="200">
+  </picture>
+</p>
+
 # CrediSentinela
 
 **Agente de IA para Customer Success B2B** — consulta assinaturas e inclui créditos extras de API com validação de regras de negócio.
