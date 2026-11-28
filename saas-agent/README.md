@@ -186,15 +186,15 @@ Resposta (formato estruturado):
 ```json
 {
   "parecer": "sucesso",
-  "mensagem": "...",
+  "mensagem": "Empresa: Logística Sul (ID 1)  \nAssinatura: STARTER – ID 10 – status **ATIVA**  \nSaldo anterior: 21 200 créditos  \nCréditos adicionados: 1 500 (motivo: “Bonificação solicitada via CrediSentinela (CS B2B)”)  \nSaldo atual: 22 700 créditos  \n\nOperação concluída com sucesso.",
   "dados_consultados": {
     "empresa_id": 1,
     "nome_empresa": "Logística Sul",
-    "assinatura_id": 1,
-    "plano": "...",
+    "assinatura_id": 10,
+    "plano": "STARTER",
     "status_assinatura": "ATIVA",
     "saldo_anterior": null,
-    "saldo_atual": 2500
+    "saldo_atual": 22700
   },
   "operacao_creditos": {
     "solicitada": true,
@@ -226,7 +226,7 @@ Resposta (formato estruturado):
 ```json
 {
   "parecer": "sucesso",
-  "mensagem": "Empresa: Logística Sul (ID 1)  \nAssinatura: 10 – plano **STARTER**, status **ATIVA**  \nSaldo anterior: 18 700 créditos  \nCréditos adicionados: 500 (motivo: *Bonificação solicitada via CrediSentinela (CS B2B)*)  \nSaldo atual: 19 200 créditos.",
+  "mensagem": "Empresa: Logística Sul (ID 1)  \nAssinatura: STARTER – ID 10 – status **ATIVA**  \nSaldo anterior: 21 200 créditos  \nCréditos adicionados: 1 500 (motivo: “Bonificação solicitada via CrediSentinela (CS B2B)”)  \nSaldo atual: 22 700 créditos  \n\nOperação concluída com sucesso.",
   "dados_consultados": {
     "empresa_id": 1,
     "nome_empresa": "Logística Sul",
@@ -234,11 +234,11 @@ Resposta (formato estruturado):
     "plano": "STARTER",
     "status_assinatura": "ATIVA",
     "saldo_anterior": null,
-    "saldo_atual": 19200
+    "saldo_atual": 22700
   },
   "operacao_creditos": {
     "solicitada": true,
-    "quantidade": 500,
+    "quantidade": 1500,
     "realizada": true,
     "motivo_recusa": null
   },
@@ -256,7 +256,10 @@ Resposta (formato estruturado):
 {
   "mensagem": "Consulte a assinatura da empresa Empresa Inexistente XYZ"
 }
+```
+**Esperado:**
 
+```json
 {
   "parecer": "recusa",
   "mensagem": "Não foi encontrada nenhuma empresa com o nome **Empresa Inexistente XYZ**. Caso tenha digitado o nome incorretamente, por favor verifique e envie novamente.",
@@ -279,36 +282,6 @@ Resposta (formato estruturado):
   "error": null
 }
 ```
-
-**Solicitação (ambígua — ajuste ao seed do SaaS):**
-
-```json
-{
-  "mensagem": "Consulte o saldo da empresa Logística e adicione 500 créditos"
-}
-
-{
-  "parecer": "sucesso",
-  "mensagem": "Empresa: Logística Sul (ID 1)  \nAssinatura: 10 – plano **STARTER**, status **ATIVA**  \nSaldo anterior: 20700 créditos  \nCréditos adicionados: 500 (motivo: “Bonificação solicitada via CrediSentinela (CS B2B)”)  \nSaldo atual: 21200 créditos.",
-  "dados_consultados": {
-    "empresa_id": 1,
-    "nome_empresa": "Logística Sul",
-    "assinatura_id": 10,
-    "plano": "STARTER",
-    "status_assinatura": "ATIVA",
-    "saldo_anterior": null,
-    "saldo_atual": 21200
-  },
-  "operacao_creditos": {
-    "solicitada": true,
-    "quantidade": 500,
-    "realizada": true,
-    "motivo_recusa": null
-  },
-  "status_operacao": "CREDITOS_INCLUIDOS",
-  "error": null
-}
-```
 ---
 
 ### Cenário 3 — Violação de regra / fora de escopo
@@ -319,7 +292,10 @@ Resposta (formato estruturado):
 {
   "mensagem": "Consulte o saldo da empresa Mercado Norte e adicione 5000 créditos"
 }
+```
+**Esperado:**
 
+```json
 {
   "parecer": "recusa",
   "mensagem": "Não foi encontrada nenhuma empresa com o nome **Mercado Norte**. Como não há empresa identificada, não foi possível consultar o saldo nem adicionar créditos. Além disso, a quantidade solicitada (5000) ultrapassa o limite máximo permitido de 3000 créditos. Caso tenha outro nome ou queira solicitar até 3000 créditos, estou à disposição.",
@@ -349,7 +325,10 @@ Resposta (formato estruturado):
 {
   "mensagem": "Cancele a assinatura da empresa Alpha Varejo Brasil"
 }
+```
+**Esperado:**
 
+```json
 {
   "parecer": "sucesso",
   "mensagem": "Desculpe, mas não podemos atender a solicitação de cancelamento da assinatura. Estamos à disposição para ajudar em outras questões relacionadas ao seu plano ou ao uso da plataforma.",
